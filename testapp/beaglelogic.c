@@ -68,6 +68,7 @@
 #define IOCTL_BL_SET_BUFFER_SIZE    _IOW('k', 0x26, uint32_t)
 
 #define IOCTL_BL_GET_BUFUNIT_SIZE   _IOR('k', 0x27, uint32_t)
+#define IOCTL_BL_SET_BUFUNIT_SIZE   _IOW('k', 0x27, uint32_t)
 
 #define IOCTL_BL_FILL_TEST_PATTERN   _IO('k', 0x28)
 
@@ -155,6 +156,10 @@ int beaglelogic_stop(int fd) {
 
 int beaglelogic_memcacheinvalidate(int fd) {
 	return ioctl(fd, IOCTL_BL_CACHE_INVALIDATE);
+}
+
+int beaglelogic_setbufunitsize(int fd, uint32_t bufunitsize) {
+	return ioctl(fd, IOCTL_BL_SET_BUFUNIT_SIZE, bufunitsize);
 }
 
 int beaglelogic_getbufunitsize(int fd) {
